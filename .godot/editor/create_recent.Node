@@ -1,0 +1,8 @@
+CollisionShape2D
+Area2D
+TextureRect
+CanvasLayer
+Sprite2D
+Polygon2D
+CollisionPolygon2D
+Node2D
