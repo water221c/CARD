@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1702313063
+::res://::1704026538
+card.tscn::PackedScene::7529947258633380309::1702319591::0::1::::<><>::uid://duxvjxngxwst6::::res://Playing Cards/2_of_clubs.png
 icon.svg::CompressedTexture2D::8559693053600972770::1701603846::1701603853::1::::<><>::
-::res://Playing Cards/::1702313065
+::res://Playing Cards/::1702313070
 2_of_clubs.png::CompressedTexture2D::8611811969600310669::1702312998::1702313070::1::::<><>::
 2_of_diamonds.png::CompressedTexture2D::9014768357678316384::1702312998::1702313070::1::::<><>::
 2_of_hearts.png::CompressedTexture2D::1085291620020735564::1702312998::1702313070::1::::<><>::
