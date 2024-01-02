@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dah3ttalmdlcs"]
+
+[ext_resource type="Script" path="res://deck.gd" id="1_prta5"]
+[ext_resource type="Texture2D" uid="uid://c1fpx8yowfd23" path="res://Playing Cards/back.png" id="2_b0otn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gdwu"]
+size = Vector2(156, 238)
+
+[node name="deck" type="Area2D"]
+position = Vector2(269, 215)
+script = ExtResource("1_prta5")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b0otn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7gdwu")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
