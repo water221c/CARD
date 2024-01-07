@@ -11,9 +11,6 @@ func _process(delta):
 	pass
 
 
-func _on_deck_draw_card(card, card_texture):
-	var new_card = card.instantiate()
-	add_child(new_card)
-	if(new_card.has_method("choose_card")):
-		new_card.choose_card(card_texture)
+func _on_deck_draw_card(card, cardTexture):
+	$hand.call("create_card", card, cardTexture)
 	

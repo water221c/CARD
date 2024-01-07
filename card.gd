@@ -2,6 +2,7 @@ extends Area2D
 
 var texture
 var textureChange = false
+var i
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,3 +21,7 @@ func choose_card(card):
 	textureChange = true
 	print("change")
 	show()
+
+func change_pos(numOfCards):
+	position = Vector2(get_viewport_rect().size.x * i / (numOfCards.size() + 1), 120)
+
