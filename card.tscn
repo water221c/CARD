@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfjtepxdqtf1v"]
+[gd_scene load_steps=4 format=3 uid="uid://dfjtepxdqtf1v"]
 
 [ext_resource type="Script" path="res://card.gd" id="1_3ybvy"]
-[ext_resource type="Texture2D" uid="uid://duxvjxngxwst6" path="res://Playing Cards/2_of_clubs.png" id="1_ies30"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_pruc3"]
 
@@ -21,7 +20,6 @@ offset_bottom = 161.0
 texture = SubResource("CanvasTexture_pruc3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ies30")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_joowa")

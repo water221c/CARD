@@ -1,3 +1,7 @@
 res://card.tscn
 res://card.gd
 res://deck.gd
+res://deck.tscn
+res://cardStats.gd
+res://Main.gd
+res://main.tscn

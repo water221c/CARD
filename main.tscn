@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy6lb7dfn4i6l"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_0ximm"]
+[ext_resource type="PackedScene" uid="uid://dah3ttalmdlcs" path="res://deck.tscn" id="2_t1pj1"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0ximm")
+
+[node name="Deck" parent="." instance=ExtResource("2_t1pj1")]
+
+[connection signal="draw_card" from="Deck" to="." method="_on_deck_draw_card"]

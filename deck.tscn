@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gdwu"]
 size = Vector2(156, 238)
 
-[node name="deck" type="Area2D"]
+[node name="Deck" type="Area2D"]
 position = Vector2(269, 215)
 script = ExtResource("1_prta5")
 metadata/_edit_group_ = true
@@ -18,3 +18,4 @@ texture = ExtResource("2_b0otn")
 shape = SubResource("RectangleShape2D_7gdwu")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
