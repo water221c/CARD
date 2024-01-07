@@ -63,15 +63,20 @@ var deck = [c2, c3, c4, c5, c6, c7, c8, c9, c10, cJ, cQ, cK, cA, d2, d3, d4, d5,
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
+	deck.shuffle()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_released("click") && mouse):
-		randomize()
-		deck.shuffle()
-		draw_card.emit(Card, deck[0])
+		if (deck.size() <= 0):
+			print("deck empty")
+		else: 
+			draw_card.emit(Card, deck[0])
+			deck.remove_at(0)
+			print("card")
 
 
 
