@@ -12,5 +12,8 @@ func _process(delta):
 
 
 func _on_deck_draw_card(card, cardTexture):
-	$hand.call("create_card", card, cardTexture)
+	$Hand.call("create_card", card, cardTexture)
 	
+
+func _on_deck_ask_hand_size():
+	$Deck.call("return_hand_size", $Hand.call("send_hand_size"))

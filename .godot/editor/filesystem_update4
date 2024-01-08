@@ -1,8 +1,7 @@
-res://main.tscn
 res://card.tscn
-res://hand.gd
-res://Main.gd
 res://deck.tscn
-res://hand.tscn
-res://card.gd
+res://main.tscn
+res://Main.gd
 res://deck.gd
+res://hand.gd
+res://hand.tscn

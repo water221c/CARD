@@ -25,4 +25,5 @@ func create_card(card, cardTexture):
 	if(newCard.has_method("choose_card")):
 		newCard.choose_card(cardTexture)
 
-
+func send_hand_size():
+	return get_tree().get_nodes_in_group("hand").size()

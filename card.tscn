@@ -8,7 +8,7 @@
 size = Vector2(222, 323)
 
 [node name="Card" type="Area2D"]
-position = Vector2(943, 261)
+position = Vector2(446, 236)
 script = ExtResource("1_3ybvy")
 metadata/_edit_group_ = true
 

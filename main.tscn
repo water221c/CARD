@@ -11,8 +11,9 @@ script = ExtResource("1_0ximm")
 position = Vector2(1024, 296)
 scale = Vector2(1.5, 1.5)
 
-[node name="hand" parent="." instance=ExtResource("3_vmfkg")]
+[node name="Hand" parent="." instance=ExtResource("3_vmfkg")]
 offset_top = 760.0
 offset_bottom = 1088.0
 
+[connection signal="ask_hand_size" from="Deck" to="." method="_on_deck_ask_hand_size"]
 [connection signal="draw_card" from="Deck" to="." method="_on_deck_draw_card"]
