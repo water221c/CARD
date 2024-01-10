@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy6lb7dfn4i6l"]
+[gd_scene load_steps=4 format=3 uid="uid://dy6lb7dfn4i6l"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_0ximm"]
 [ext_resource type="PackedScene" uid="uid://dah3ttalmdlcs" path="res://deck.tscn" id="2_t1pj1"]
+[ext_resource type="PackedScene" uid="uid://cxg4yujhal6y1" path="res://hand.tscn" id="3_vmfkg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0ximm")
 
 [node name="Deck" parent="." instance=ExtResource("2_t1pj1")]
+position = Vector2(1024, 296)
+scale = Vector2(1.5, 1.5)
 
+[node name="Hand" parent="." instance=ExtResource("3_vmfkg")]
+offset_top = 760.0
+offset_bottom = 1088.0
+
+[connection signal="ask_hand_size" from="Deck" to="." method="_on_deck_ask_hand_size"]
 [connection signal="draw_card" from="Deck" to="." method="_on_deck_draw_card"]

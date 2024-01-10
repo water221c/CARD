@@ -3,6 +3,7 @@ extends Area2D
 var mouse = false
 
 signal draw_card(card, card_texture)
+signal ask_hand_size()
 
 var Card = preload("res://card.tscn")
 
@@ -61,23 +62,39 @@ const sA = preload("res://Playing Cards/ace_of_spades.png")
 
 var deck = [c2, c3, c4, c5, c6, c7, c8, c9, c10, cJ, cQ, cK, cA, d2, d3, d4, d5, d6, d7, d8, d9, d10, dJ, dQ, dK, dA, h2, h3, h4, h5, h6, h7, h8, h9, h10, hJ, hQ, hK, hA, s2, s3, s4, s5, s6, s7, s8, s9, s10, sJ, sQ, sK, sA]
 
+var handSize = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
+	deck.shuffle()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_released("click") && mouse):
-		randomize()
-		deck.shuffle()
-		draw_card.emit(Card, deck[0])
+		if (deck.size() <= 0): #checks if deck is empty
+			print("deck empty")
+		else: 
+			get_hand_size()
+			if (handSize >= 8): #limits maximum hand size to arg minus 1
+				pass
+			else:
+				draw_card.emit(Card, deck[0])
+				deck.remove_at(0)
+				print("card")
 
+#asks main to send a request to Hand to return its card amount
+func get_hand_size():
+	ask_hand_size.emit()
 
+#sets handSize var to returned int
+func return_hand_size(size):
+	handSize = size
 
 func _on_mouse_entered():
 	mouse = true
-
 
 func _on_mouse_exited():
 	mouse = false

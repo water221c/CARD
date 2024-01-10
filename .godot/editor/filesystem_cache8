@@ -1,11 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1704266586
-card.gd::GDScript::-1::1704205490::0::1::::<>Area2D<>::
-card.tscn::PackedScene::7529947258633380309::1704198981::0::1::::<><>::res://card.gd<>uid://duxvjxngxwst6::::res://Playing Cards/2_of_clubs.png
+::res://::1704731590
+card.gd::GDScript::-1::1704701198::0::1::::<>Area2D<>::
+card.tscn::PackedScene::7529947258633380309::1704701487::0::1::::<><>::res://card.gd
+cardStats.gd::GDScript::-1::1704267235::0::1::::CardStats<>RefCounted<>::
+deck.gd::GDScript::-1::1704701198::0::1::::<>Area2D<>::
+deck.tscn::PackedScene::7175447699698984762::1704701487::0::1::::<><>::res://deck.gd<>uid://c1fpx8yowfd23::::res://Playing Cards/back.png
+hand.gd::GDScript::-1::1704701198::0::1::::<>PanelContainer<>::
+hand.tscn::PackedScene::6401375754118010174::1704701198::0::1::::<><>::res://hand.gd
 icon.svg::CompressedTexture2D::8559693053600972770::1704192296::1704192405::1::::<><>::
-deck.gd::GDScript::-1::1704264823::0::1::::<>Area2D<>::
-deck.tscn::PackedScene::7175447699698984762::1704264823::0::1::::<><>::res://deck.gd<>uid://c1fpx8yowfd23::::res://Playing Cards/back.png
-card_stats.gd::GDScript::-1::1704266586::0::1::::<>Object<>::
+Main.gd::GDScript::-1::1704701198::0::1::::<>Node2D<>::
+main.tscn::PackedScene::8908461367109586913::1704701487::0::1::::<><>::res://Main.gd<>uid://dah3ttalmdlcs::::res://deck.tscn<>res://hand.tscn
 ::res://Playing Cards/::1704192296
 2_of_clubs.png::CompressedTexture2D::8611811969600310669::1704192296::1704192296::1::::<><>::
 2_of_diamonds.png::CompressedTexture2D::9014768357678316384::1704192296::1704192296::1::::<><>::
