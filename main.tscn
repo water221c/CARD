@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy6lb7dfn4i6l"]
+[gd_scene load_steps=5 format=3 uid="uid://dy6lb7dfn4i6l"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_0ximm"]
 [ext_resource type="PackedScene" uid="uid://dah3ttalmdlcs" path="res://deck.tscn" id="2_t1pj1"]
 [ext_resource type="PackedScene" uid="uid://cxg4yujhal6y1" path="res://hand.tscn" id="3_vmfkg"]
+[ext_resource type="PackedScene" uid="uid://dcba54a75l43i" path="res://shuffle.tscn" id="4_m6knk"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0ximm")
@@ -15,5 +16,10 @@ scale = Vector2(1.5, 1.5)
 offset_top = 760.0
 offset_bottom = 1088.0
 
+[node name="shuffle" parent="." instance=ExtResource("4_m6knk")]
+scale = Vector2(1.5, 1.5)
+
 [connection signal="ask_hand_size" from="Deck" to="." method="_on_deck_ask_hand_size"]
+[connection signal="clear_hand" from="Deck" to="." method="_on_deck_clear_hand"]
 [connection signal="draw_card" from="Deck" to="." method="_on_deck_draw_card"]
+[connection signal="pressed" from="shuffle" to="." method="_on_shuffle_pressed"]

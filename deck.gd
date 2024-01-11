@@ -4,6 +4,7 @@ var mouse = false
 
 signal draw_card(card, card_texture)
 signal ask_hand_size()
+signal clear_hand()
 
 var Card = preload("res://card.tscn")
 
@@ -61,6 +62,7 @@ const hA = preload("res://Playing Cards/ace_of_hearts.png")
 const sA = preload("res://Playing Cards/ace_of_spades.png")
 
 var deck = [c2, c3, c4, c5, c6, c7, c8, c9, c10, cJ, cQ, cK, cA, d2, d3, d4, d5, d6, d7, d8, d9, d10, dJ, dQ, dK, dA, h2, h3, h4, h5, h6, h7, h8, h9, h10, hJ, hQ, hK, hA, s2, s3, s4, s5, s6, s7, s8, s9, s10, sJ, sQ, sK, sA]
+var discard = []
 
 var handSize = 0
 
@@ -82,8 +84,17 @@ func _process(delta):
 				pass
 			else:
 				draw_card.emit(Card, deck[0])
+				discard.append(deck[0])
 				deck.remove_at(0)
 				print("card")
+
+#reshuffles the discard pile into the deck
+func reshuffle():
+	deck.append_array(discard)
+	randomize()
+	deck.shuffle()
+	discard.clear()
+	clear_hand.emit()
 
 #asks main to send a request to Hand to return its card amount
 func get_hand_size():

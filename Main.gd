@@ -13,7 +13,13 @@ func _process(delta):
 
 func _on_deck_draw_card(card, cardTexture):
 	$Hand.call("create_card", card, cardTexture)
-	
 
 func _on_deck_ask_hand_size():
 	$Deck.call("return_hand_size", $Hand.call("send_hand_size"))
+
+func _on_deck_clear_hand():
+	$Hand.call("clear_hand")
+
+
+func _on_shuffle_pressed():
+	$Deck.call("reshuffle")

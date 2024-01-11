@@ -5,3 +5,5 @@ res://Main.gd
 res://deck.gd
 res://hand.gd
 res://hand.tscn
+res://shuffle.tscn
+res://card.gd
