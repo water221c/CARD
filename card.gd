@@ -22,6 +22,8 @@ func choose_card(card):
 	print("change")
 	show()
 
-func change_pos(numOfCards):
-	position = Vector2(get_viewport_rect().size.x * i / (numOfCards.size() + 1), 120)
+func change_pos(numOfCards, parent):
+	position = Vector2(parent.size.x * i / (numOfCards.size() + 1), parent.size.y / 2)
 
+func delete():
+	queue_free()

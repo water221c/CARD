@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://hand.gd" id="1_mhica"]
 
-[node name="Hand" type="PanelContainer" groups=["hand"]]
+[node name="Hand" type="PanelContainer" groups=["cards"]]
 offset_top = 912.0
 offset_right = 1920.0
 offset_bottom = 1080.0
