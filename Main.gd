@@ -13,10 +13,13 @@ func _process(delta):
 	if (userCardTog && enemyCardTog):
 		if ($Hand.lastUserCard.value > $EnemyHand.lastEnemyCard.value):
 			$Win.show()
+			$Deck.result(1)
 		elif ($Hand.lastUserCard.value < $EnemyHand.lastEnemyCard.value):
 			$Lose.show()
+			$Deck.result(-1)
 		else:
 			$Draw.show()
+			$Deck.result(0)
 		userCardTog = false
 		enemyCardTog = false
 
@@ -52,3 +55,12 @@ func drawn_user_card():
 
 func drawn_enemy_card():
 	enemyCardTog = true
+
+
+func _on_button_pressed():
+	$Deck.play()
+
+
+func _on_deck_update_text(userDeck, userDiscard, enemyDeck, enemyDiscard):
+	$UserCards.set_text("Deck: " + str(userDeck) + ", Discard: " + str(userDiscard))
+	$EnemyCards.set_text("Deck: " + str(enemyDeck) + ", Discard: " + str(enemyDiscard))
