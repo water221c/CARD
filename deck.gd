@@ -101,9 +101,11 @@ func reshuffle():
 	deck.shuffle()
 	userDeck.clear()
 	enemyDeck.clear()
+	userDiscard.clear()
+	enemyDiscard.clear()
 	for i in deck.size() / 2:
 		userDeck.append(deck[i])
-		enemyDeck.append(deck[i + 26])
+		enemyDeck.append(deck[i + (deck.size() / 2)])
 	clear_hand.emit()
 	update_counts()
 
