@@ -1,8 +1,8 @@
 extends Area2D
 
 
-signal draw_card(card, cardTexture, cardValue)
-signal draw_opp_card(card, cardTexture, cardValue)
+signal draw_card(card, cardTexture, cardValue, fightToggle)
+signal draw_opp_card(card, cardTexture, cardValue, fightToggle)
 signal ask_hand_size()
 signal clear_hand()
 signal update_text(userDeck, userDiscard, enemyDeck, enemyDiscard)
@@ -127,8 +127,8 @@ func draw_user_card():
 			userDiscard.clear()
 		else:
 			print("YOU LOSE")
-			pass
-	draw_card.emit(Card, userDeck[0][0], userDeck[0][1])
+	if (userDeck.size() > 0):
+		draw_card.emit(Card, userDeck[0][0], userDeck[0][1], false)
 
 
 #draws a card for the opponent
@@ -142,8 +142,8 @@ func draw_enemy_card():
 			enemyDiscard.clear()
 		else:
 			print("YOU WIN")
-			pass
-	draw_opp_card.emit(Card, enemyDeck[0][0], enemyDeck[0][1])
+	if (enemyDeck.size() > 0):
+		draw_opp_card.emit(Card, enemyDeck[0][0], enemyDeck[0][1], false)
 
 func result(result: int):
 	#Win
@@ -160,11 +160,97 @@ func result(result: int):
 		enemyDeck.remove_at(0)
 	#Draw
 	elif (result == 0):
-		 #need to add a "מלחמה" function
-		userDiscard.append(userDeck[0])
-		userDiscard.append(enemyDeck[0])
-		userDeck.remove_at(0)
-		enemyDeck.remove_at(0)
+		#need to add a "מלחמה" function
+		fight(0)
 
 func update_counts():
 	update_text.emit(userDeck.size(), userDiscard.size(), enemyDeck.size(), enemyDiscard.size())
+
+
+func fight(interval):
+	var times = interval + 1
+	
+	var userVal = 0
+	var enemyVal = 0
+	
+	
+	if (userDeck.size() < 5 + 4 * interval):
+		if (userDeck.size() < 4 + 4 * interval):
+			if (userDeck.size() < 3 + 4 * interval):
+				if (userDeck.size() < 2 + 4 * interval):
+					userDeck.append_array(userDiscard)
+					userDiscard.clear()
+					fight(interval)
+				else:
+					draw_card.emit(Card, userDeck[1 + 4 * interval][0], userDeck[1 + 4 * interval][1], true)
+					userVal = userDeck[1 + 4 * interval][1]
+			else:
+				draw_card.emit(Card, userDeck[2 + 4 * interval][0], userDeck[2 + 4 * interval][1], true)
+				userVal = userDeck[2 + 4 * interval][1]
+		else:
+			draw_card.emit(Card, userDeck[3 + 4 * interval][0], userDeck[3 + 4 * interval][1], true)
+			userVal = userDeck[3 + 4 * interval][1]
+	else:
+		draw_card.emit(Card, userDeck[4 + 4 * interval][0], userDeck[4 + 4 * interval][1], true)
+		userVal = userDeck[4 + 4 * interval][1]
+	
+	if (enemyDeck.size() < 5 + 4 * interval):
+		if (enemyDeck.size() < 4 + 4 * interval):
+			if (enemyDeck.size() < 3 + 4 * interval):
+				if (enemyDeck.size() < 2 + 4 * interval):
+					enemyDeck.append_array(enemyDiscard)
+					enemyDiscard.clear()
+					fight(interval)
+				else:
+					draw_opp_card.emit(Card, enemyDeck[1 + 4 * interval][0], enemyDeck[1 + 4 * interval][1], true)
+					enemyVal = enemyDeck[1 + 4 * interval][1]
+			else:
+				draw_opp_card.emit(Card, enemyDeck[2 + 4 * interval][0], enemyDeck[2 + 4 * interval][1], true)
+				enemyVal = enemyDeck[2 + 4 * interval][1]
+		else:
+			draw_opp_card.emit(Card, enemyDeck[3 + 4 * interval][0], enemyDeck[3 + 4 * interval][1], true)
+			enemyVal = enemyDeck[3 + 4 * interval][1]
+	else:
+		draw_opp_card.emit(Card, enemyDeck[4 + 4 * interval][0], enemyDeck[4 + 4 * interval][1], true)
+		enemyVal = enemyDeck[4 + 4 * interval][1]
+	
+	#check who won the fight
+	var result = userVal - enemyVal
+	
+	#case for user winning
+	if (result > 0):
+		for i in (userDeck.size() - 1):
+			if (i < 5 + 4 * interval):
+				if (userDeck.size() < i):
+					userDeck.append_array(userDiscard)
+					userDiscard.clear()
+				userDiscard.append(userDeck[0])
+				userDeck.remove_at(0)
+		for i in (enemyDeck.size() - 1):
+			if (i < 5 + 4 * interval):
+				if (enemyDeck.size() < i):
+					enemyDeck.append_array(enemyDiscard)
+					enemyDiscard.clear()
+				userDiscard.append(enemyDeck[0])
+				enemyDeck.remove_at(0)
+	
+	#case for enemy winning
+	elif (result < 0):
+		for i in (userDeck.size() - 1):
+			if (i < 5 + 4 * interval):
+				if (userDeck.size() < i):
+					userDeck.append_array(userDiscard)
+					userDiscard.clear()
+				enemyDiscard.append(userDeck[0])
+				userDeck.remove_at(0)
+		for i in (enemyDeck.size() - 1):
+			if (i < 5 + 4 * interval):
+				if (enemyDeck.size() < i):
+					enemyDeck.append_array(enemyDiscard)
+					enemyDiscard.clear()
+				enemyDiscard.append(enemyDeck[0])
+				enemyDeck.remove_at(0)
+	
+	#case for a draw, which means another fight
+	elif (result == 0):
+		fight(times)

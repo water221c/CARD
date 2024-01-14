@@ -24,19 +24,21 @@ func _process(delta):
 		enemyCardTog = false
 
 
-func _on_deck_draw_card(card, cardTexture, cardValue):
+func _on_deck_draw_card(card, cardTexture, cardValue, fightToggle):
 	$Win.hide()
 	$Draw.hide()
 	$Lose.hide()
 	$Hand.call("create_card", card, cardTexture, cardValue)
-	drawn_user_card()
+	if (!fightToggle):
+		drawn_user_card()
 
-func _on_deck_draw_opp_card(card, cardTexture, cardValue):
+func _on_deck_draw_opp_card(card, cardTexture, cardValue, fightToggle):
 	$Win.hide()
 	$Draw.hide()
 	$Lose.hide()
 	$EnemyHand.call("create_enemy_card", card, cardTexture, cardValue)
-	drawn_enemy_card()
+	if (!fightToggle):
+		drawn_enemy_card()
 
 func _on_deck_ask_hand_size():
 	$Deck.call("return_hand_size", $Hand.call("send_hand_size"))
