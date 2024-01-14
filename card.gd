@@ -3,6 +3,7 @@ extends Area2D
 var texture
 var textureChange = false
 var i
+var value
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,14 +17,17 @@ func _process(_delta):
 		$Sprite2D.texture = texture
 		textureChange = false
 
-func choose_card(card):
+func choose_card(card, cardValue):
 	texture = card
+	value = cardValue
 	textureChange = true
-	print("change")
+	#print("change")
 	show()
 
 func change_pos(numOfCards, parent):
-	position = Vector2(parent.size.x * i / (numOfCards.size() + 1), parent.size.y / 2)
+	position = Vector2(parent.size.x * i / (numOfCards.size()), parent.size.y / 2)
+	
 
 func delete():
 	queue_free()
+

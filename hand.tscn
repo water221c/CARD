@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://hand.gd" id="1_mhica"]
 
-[node name="Hand" type="PanelContainer" groups=["cards"]]
+[node name="Hand" type="PanelContainer" groups=["cards", "enemy_cards"]]
+offset_left = 2.0
 offset_top = 912.0
-offset_right = 1920.0
+offset_right = 1922.0
 offset_bottom = 1080.0
 script = ExtResource("1_mhica")
